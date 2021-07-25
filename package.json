@@ -1,0 +1,33 @@
+{
+  "name": "log-insight",
+  "version": "1.0.0",
+  "description": "Log parse, comment, mark, filter quickly and finally find out the root cause.",
+  "main": "index.js",
+  "repository": "https://github.com/xiunen/log-insight.git",
+  "author": "xiunen@163.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@types/node": "^16.4.2",
+    "babel-loader": "^8.2.2",
+    "css-minimizer-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "ts-loader": "^9.2.4",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5",
+    "webpack": "^5.46.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "devServer": "ts-node server/index.ts",
+    "devClient": "NODE_ENV=development webpack serve"
+  }
+}
