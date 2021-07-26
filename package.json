@@ -19,6 +19,8 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^5.0.2",
     "ts-loader": "^9.2.4",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5",
@@ -29,5 +31,8 @@
   "scripts": {
     "devServer": "ts-node server/index.ts",
     "devClient": "NODE_ENV=development webpack serve"
+  },
+  "dependencies": {
+    "sequelize-cli": "^6.2.0"
   }
 }
