@@ -2,20 +2,21 @@
 Log parse, comment, mark, filter quickly and finally find out the root cause. 
 
 ## Server API
-### POST /logfiles
+### POST /api/logfiles
 Upload a log file
-### GET /logfiles
+### GET /api/logfiles
 List all log files
 #### Response
 ```
 [
   {
+    id:1,
     filename:"foo.log",
     createdAt:"2021-08-11 12:00:12"
   }
 ]
 ```
-### GET /logfile/:fileid
+### GET /api/logfile/:fileid
 Show logs in log file
 |Parameter|type|explaination|
 |--|--|--|
@@ -23,14 +24,14 @@ Show logs in log file
 |token|string|search token, match content of log|
 |mark|enum|mark type, 0 none, 1 red 2 green 3 orange 4 blue |
 |remark|bool|only remarked lines or include not remarked lines|
-### PUT /log/:logid
+### PUT /api/log/:logid
 Comment or mark a log
 |Parameter|type|explaination|
 |--|--|--|
 |omit|bool|wether omit the log line|
 |remark|string|add comment the log line|
 |mark|enum|mark type,, 0 none, 1 red 2 green 3 orange 4 blue|
-### GET /logfile/:fileid/config
+### GET /api/logfile/:fileid/config
 Get logfile config 
 #### Response
 ```
@@ -43,13 +44,13 @@ Get logfile config
 ]
 ```
 
-### POST /logfile/:fileid/configs
+### POST /api/logfile/:fileid/configs
 Add logfile config 
 |Parameter|type|explaination|
 |--|--|--|
 |name|string|column name|
 |expression|string|column extract expression|
-### PUT /logfile/:fileid/config/:configid
+### PUT /api/logfile/:fileid/config/:configid
 Update logfile config 
 |Parameter|type|explaination|
 |--|--|--|

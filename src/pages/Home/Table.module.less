@@ -1,0 +1,33 @@
+.table{
+  width: 800px;
+  border: 1px solid #a4a4a4;
+  border-collapse: collapse;
+  td{
+    padding: 5px 10px;
+  }
+}
+
+.container{
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 800px;
+  border: 1px solid #a4a4a4;
+  background: #a4a4a4;
+  display: grid;
+  grid-template-columns: 5fr 3fr 2fr;
+  grid-gap: 1px;
+  >*{
+    padding: 5px 10px;
+    background: white;
+  }
+  .action>*{margin-right: 10px;}
+  .action>a{
+    text-decoration: none;
+    color: #0170fe;
+  }
+}
+
+.header{
+  background-color: #f1f2f3;
+  font-weight: 500;
+}
