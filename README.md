@@ -3,9 +3,10 @@ Log parse, comment, mark, filter quickly and finally find out the root cause.
 
 ## Server API
 ### POST /api/logfiles
-Upload a log file
+Upload a log file, parse log and save in DB.
 ### GET /api/logfiles
-List all log files
+List all log files. 
+
 #### Response
 ```
 [
@@ -16,13 +17,16 @@ List all log files
   }
 ]
 ```
+
+### DELETE /api/logfile/:id
+Delete log file and related stuff.
 ### GET /api/logfile/:fileid
 Show logs in log file
 |Parameter|type|explaination|
 |--|--|--|
 |omit|bool|include omit lines or not, default false|
 |token|string|search token, match content of log|
-|mark|enum|mark type, 0 none, 1 red 2 green 3 orange 4 blue |
+|marks|enum array|mark type, 0 none, 1 red 2 green 3 orange 4 blue |
 |remark|bool|only remarked lines or include not remarked lines|
 ### PUT /api/log/:logid
 Comment or mark a log
@@ -57,6 +61,9 @@ Update logfile config
 |name|string|column name|
 |expression|string|column extract expression|
 |priority|integer|display priority|
+
+### DELETE /api/logfile/:fileid/config/:configid
+Delete a logfile config.
 
 
 

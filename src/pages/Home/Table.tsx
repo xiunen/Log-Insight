@@ -1,10 +1,24 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { format as formatTime } from "@/utils/time";
+import { request } from "@/utils/network";
 import style from "./Table.module.less";
 
-export default ({ files }) => {
+export default ({ files, onRefresh }) => {
   if (!files.length) return null;
+
+  const handleDelete = useCallback((fileId) => {
+    if (!window.confirm('Delete?')) return;
+    request(`/api/logfile/${fileId}`, {
+      method: 'DELETE'
+    }).then(([error, result]) => {
+      if (error) {
+        alert(error.message);
+      } else {
+        onRefresh();
+      }
+    })
+  }, [])
 
   return (
     <div className={style.container}>
@@ -17,7 +31,7 @@ export default ({ files }) => {
           <div key={`time-${item.id}`}>{formatTime(item.createdAt)}</div>
           <div key={`op-${item.id}`} className={style.action}>
             <Link to={`/log/${item.id}`} >View</Link>
-            <a >Delete</a>
+            <a href="javascript:void(0)" onClick={() => handleDelete(item.id)}>Delete</a>
           </div>
         </React.Fragment>
       ))}

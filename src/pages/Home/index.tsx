@@ -2,14 +2,17 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Header from './Header';
 import Table from './Table';
 import Upload from './Upload';
+import { request } from '@/utils/network'
 
 export default () => {
   const [files, setFiles] = useState([]);
   const fetchData = useCallback(() => {
-    fetch('/api/logfiles').then(res => {
-      if (res.ok) return res.json()
-    }).then(data => {
-      setFiles(data);
+    request('/api/logfiles').then(([err, result]) => {
+      if (err) {
+        alert(err.message);
+        return;
+      }
+      setFiles(result);
     })
   }, [])
   useEffect(() => {
@@ -29,7 +32,7 @@ export default () => {
         type={files.length ? 'button' : 'area'}
         onFinish={() => { fetchData() }}
       />
-      <Table files={files} />
+      <Table files={files} onRefresh={fetchData} />
     </div>
   )
 }
